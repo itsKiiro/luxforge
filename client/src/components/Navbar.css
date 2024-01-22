@@ -1,0 +1,37 @@
+.Navbar {
+    display: flex;
+    padding-left: 10%;
+    padding-right: 10%;
+    justify-content: space-between;
+    height: 80px;
+    align-items: center;
+    background: linear-gradient(135deg, #240334, #2d004f, #12000f);
+}
+
+.navLinks {
+    display: flex;
+    gap: 10px;
+}
+
+.navLink {
+    padding: 10px;
+    background-color: #fff;
+    color: black;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, -40% 100%);
+    transform: skewX(-20deg);
+    padding-left: 17px;
+    padding-right: 17px;
+}
+
+.navLink:last-child {
+    margin-left: 40px;
+}
+
+.navLink:hover {
+    cursor: pointer;
+    opacity: 0.9;
+}
+
+.logoContainer {
+    color: #fff
+}

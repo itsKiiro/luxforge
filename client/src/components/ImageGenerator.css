@@ -1,0 +1,111 @@
+.ImageGenerator {
+    display: grid;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    min-height: 400px;
+    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.imagePromptForm {
+    display: flex;
+    flex-direction: column;
+    gap: 4%;
+}
+
+.promptInput {
+    padding: 7px;
+    letter-spacing: 1px;
+    border-left: solid 1.7px black;
+    border-bottom: solid 1.7px black;
+    border-top: none;
+    border-right: none;
+    color: black;
+    width: 100%;
+
+}
+
+.settingInputs {
+    display: flex;
+    gap: 40px;
+}
+
+.settingInputs > label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.imageSettingContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: solid 2px black;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
+.imageSettingContainer:first-child {
+    border-bottom: none;
+}
+
+.imageGptButton > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #2a003f, #3b004f, #12000f);
+    border-color: #fff;
+    color: #fff;
+    font-size: larger;
+    width: 100%;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.imageSettingsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.saveImageButtons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.saveImageButtons > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #2a003f, #3b004f, #12000f);
+    border-color: #fff;
+    color: #fff;
+    font-size: larger;
+    width: 100%;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.settingHeaderContainer {
+    font-size: larger;
+    font-weight: 600;
+}
+
+.imagePlaceholderContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arrowIcons {
+    display: flex;
+}
+
+.arrowIcons ion-icon {
+    font-size: 40px;
+}

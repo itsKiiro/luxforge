@@ -1,0 +1,13 @@
+.TextHistory {
+    margin-bottom: 4%;
+    min-height: 400px;
+    margin-top: 40px;
+}
+
+.historyHeaderContainer {
+    font-size: larger;
+    color: black;
+    border-bottom: solid 1px black;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}

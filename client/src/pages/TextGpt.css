@@ -1,0 +1,9 @@
+.TextGpt {
+    /* background: linear-gradient(135deg, #2a003f, #3b004f, #12000f); */
+    height: calc(100vh - 80px);
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 3fr 1fr;
+    padding-left: 10%;
+    padding-right: 10%;
+}

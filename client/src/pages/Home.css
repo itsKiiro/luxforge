@@ -1,0 +1,5 @@
+.Home {
+    background: linear-gradient(135deg, #2a003f, #3b004f, #12000f);
+    height: calc(100vh - 80px);
+    width: 100%;
+}
