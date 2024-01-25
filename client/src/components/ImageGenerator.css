@@ -109,3 +109,29 @@
 .arrowIcons ion-icon {
     font-size: 40px;
 }
+
+.gptImageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media(max-width: 1028px) {
+    .ImageGenerator {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .settingInputs {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .promptInput {
+        width:auto;
+    }
+
+    .imageSettingsContainer {
+        padding-bottom: 100px;
+    }
+}

@@ -7,3 +7,12 @@
     padding-left: 10%;
     padding-right: 10%;
 }
+
+@media(max-width: 1028px) {
+    .TextGpt {
+        display: flex;
+        flex-direction: column;
+        padding-left: 1.4%;
+        padding-right: 1.4%;
+    }
+}

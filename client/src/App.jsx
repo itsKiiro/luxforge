@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import TextGpt from './pages/TextGpt';
 import ImageGpt from './pages/ImageGpt';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 function App() {
 
@@ -15,6 +17,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/text" element={<TextGpt />} />
         <Route path="/image" element={<ImageGpt />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/sign-up" element={<SignUp />} />
       </Routes>
     </Router>
 

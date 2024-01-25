@@ -35,3 +35,136 @@
 .logoContainer {
     color: #fff
 }
+
+.userSidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 100%;
+    background: white;
+    box-shadow: -2px 0px 5px rgba(0, 0, 0, 0.5);
+    transform: translateX(110%);
+    transition: transform 0.3s ease-in-out;
+    margin-top: 120px;
+    z-index: 1;
+    padding: 10px;
+}
+
+.userSidebar.open {
+    transform: translateX(0);
+}
+
+.userInteractionContainer {
+    width: 100%;
+    height: 80%;
+}
+
+.userInteractionContainer > h4 {
+    font-size: x-large;
+}
+
+.userButtonContainer {
+    align-self: flex-end;
+    margin-top: auto;
+}
+
+.userInteractionContainer > .userButtonContainer > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #2a003f, #3b004f, #12000f);
+    border-color: #fff;
+    color: #fff;
+    font-size: larger;
+    width: 100%;
+    padding: 0.4rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.mobileNavContainer {
+    display: none;
+}
+
+.mobileMenu {
+    display: none;
+}
+
+
+@media(max-width: 1028px) {
+    .navLinks {
+        display: none;
+    }
+
+    .mobileNavContainer {
+        display: flex;
+        width: 100%;
+        height: 80px;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    .mobileNavContainer ion-icon {
+        font-size: 40px;
+        color: #fff;
+        margin-right: 5%;
+    }
+
+    .mobileMenu {
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0; 
+        left: 0;
+        right: 0;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        transform: translateY(-100%);
+        height: 100vH;
+        background-color: #1a1a1a;
+        z-index: 1;
+    }
+    
+    .mobileMenu.open {
+        transform: translateY(0);
+    }
+
+    .navLinksMobile {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        gap: 4rem;
+        width: 100%;
+    }
+
+    .navLink:last-child {
+        margin-left: 0;
+    }
+
+    .mobileMenu > ion-icon {
+        color: #fff;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: 40px;
+        margin: 5%
+    }
+
+    .userSidebar {
+        width: 80vw;
+    }
+
+    .navLink {
+        background: linear-gradient(135deg, #240334, #2d004f, #12000f);
+        color: #fff;
+        width: 70%;
+    }
+}

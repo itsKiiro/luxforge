@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import "./TextGenerator.css";
 import { getApi } from "./Api";
 
@@ -7,9 +7,11 @@ const TextGenerator = () => {
 
     const [textInput, setTextInput] = useState("");
     const [textOutput, setTextOutput] = useState("");
+    const [displayedOutput, setDisplayedOutput] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setDisplayedOutput("");
         
         fetch(getApi() + "/generate/text", {
             method: "POST",
@@ -24,12 +26,31 @@ const TextGenerator = () => {
         })
     }
 
+    useEffect(() => {
+
+        let index = 0;
+
+        const timer = setInterval(() => {
+            setDisplayedOutput((prev) => prev + textOutput.charAt(index));
+            index++;
+
+            if (index === textOutput.length) {
+                clearInterval(timer);
+            }
+        }, 40);
+    
+    
+        return () => {
+            clearTimeout(timer);
+        };
+    }, [textOutput]);
+
 
     return (
         <div className="TextGenerator">
 
             <div className="textOutputContainer">
-                <p className="textOutput" value={textOutput}>{textOutput}</p>
+                <p className="textOutput" value={displayedOutput}>{displayedOutput}</p>
             </div>
             <form className="textInputForm" onSubmit={handleSubmit}>
                 <input 

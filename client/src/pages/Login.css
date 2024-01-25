@@ -1,0 +1,100 @@
+.Login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+}
+
+.SignUp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    width: 25%;
+}
+
+.loginHeaderContainer {
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+}
+
+.loginInputsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.loginInputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.loginInputContainer > input {
+    width: 100%;
+    padding: 7px;
+    letter-spacing: 1px;
+    border-left: solid 1.7px black;
+    border-bottom: solid 1.7px black;
+    border-top: none;
+    border-right: none;
+    color: black;
+    width: 100%;
+}
+
+.loginInputContainer > p {
+    font-size: larger;
+}
+
+.loginButtonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.loginButtonContainer > p {
+    align-self: center;
+}
+
+.loginButtonContainer > p:hover {
+    cursor: pointer;
+    color: #3b004f;
+}
+
+.loginButtonContainer > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #2a003f, #3b004f, #12000f);
+    border-color: #fff;
+    color: #fff;
+    font-size: larger;
+    width: 70%;
+    padding: 0.4rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+@media(max-width: 1028px) {
+    .loginForm {
+        width: 100%;
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+
+    .loginInputContainer > input {
+        width: auto;
+    }
+
+    .SignUp {
+        padding-bottom: 100px;
+    }
+}

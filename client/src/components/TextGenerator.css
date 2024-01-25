@@ -52,3 +52,13 @@
     margin-right: 4%;
     margin: 1.8%;
 }
+
+@media(max-width: 1028px) {
+    .textOutputContainer {
+        height: 100%;
+    }
+
+    .TextGenerator {
+        height: 100vh;
+    }
+}

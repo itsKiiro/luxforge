@@ -10,16 +10,30 @@ const ImageGenerator = () => {
     const [imageUrl, setImageUrl] = useState("");
     const [imageModel, setImageModel] = useState("");
     const [imageSize, setImageSize] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
+
+    const token = localStorage.getItem("jwtToken");
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (imageSize === "1024x1792" && imageModel !== "dall-e-3" || imageSize === "1792x1024" && imageModel !== "dall-e-3") {
-            toast.error("Dall-E-3 Only");
+        if (imageModel === "dall-e-3" && !token) {
+            toast.error("Login To Use Dall-E-3!");
             return;
         }
 
+        if (imageSize === "1024x1792" && imageModel !== "dall-e-3" || imageSize === "1792x1024" && imageModel !== "dall-e-3") {
+            toast.error("This size works with Dall-E-3 Only");
+            return;
+        }
+
+        if (imageSize === "512x512" && imageModel === "dall-e-3" || imageSize === "256x256" && imageModel === "dall-e-3") {
+            toast.error("This size works with Dall-E-2 Only");
+            return;
+        }
+
+        setIsLoading(true);
         setImageUrl("");
 
         const imageSettings = {
@@ -37,12 +51,30 @@ const ImageGenerator = () => {
         }).then((res) => res.json())
         .then((data) => {
             setImagePrompt("");
-            setImageUrl(data.reply)
-            toast.success("Image generated")
+            setImageUrl(data.reply);
+            toast.success("Image generated");
+        })
+        .finally(() => {
+            setIsLoading(false);
         })
 
     }
 
+    const handleDownloadImage = () => {
+        if (imageUrl) {
+            const link = document.createElement('a');
+            link.href = imageUrl;
+            link.target = '_blank';
+            link.download = 'generated_image.jpg';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            toast.error('No image to download. Generate an image first.');
+        }
+    };
+    
+    
 
     return (
         <div className="ImageGenerator">
@@ -65,7 +97,7 @@ const ImageGenerator = () => {
                         </div>
                         <div className="settingInputs">
                             <label onClick={() => setImageModel("dall-e-2")}>
-                                <p>Dall - E 2</p>
+                                <p>Dall - E 2 (Free)</p>
                                 <input type="radio" value="Dalle-2" name="model" />
                             </label>
                             <label onClick={() => setImageModel("dall-e-3")}>
@@ -106,14 +138,19 @@ const ImageGenerator = () => {
                         </div>
                     </div>
                     <div className="imageGptButton">
-                        <button>Generate Image</button>
+                        <button 
+                            style={{ cursor: isLoading ? "not-allowed" : "pointer", opacity: isLoading ? "0.7" : "1" }} 
+                            disabled={isLoading}
+                        >
+                            {isLoading ? "loading..." : "Generate Image"}
+                        </button>
                     </div>
                 </form>
 
                 {imageUrl && (
                     <div className="saveImageButtons">
-                        <button>Save Image</button>
-                        <button>Show Full Image</button>
+                        <button onClick={handleDownloadImage}>Save Image</button>
+                        <button onClick={handleDownloadImage}>Show Full Image</button>
                     </div>
                 )}
             </div>
