@@ -3,3 +3,9 @@
     height: calc(100vh - 80px);
     width: 100%;
 }
+
+@media(max-width: 1028px) {
+    .Home {
+        height: 100%;
+    }
+}
