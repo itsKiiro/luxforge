@@ -6,6 +6,6 @@
 
 @media(max-width: 1028px) {
     .Home {
-        height: 100%;
+        overflow-y: scroll;
     }
 }
