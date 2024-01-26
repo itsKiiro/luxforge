@@ -34,7 +34,6 @@ const Navbar = () => {
     }
 
     const handleCheckout = () => {
-        console.log(user);
         fetch(getApi() + "/create/checkout/session", {
             method: "POST",
             headers: {
