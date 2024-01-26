@@ -91,10 +91,16 @@ const Navbar = () => {
 
             <div className={`userSidebar ${showUserSidebar ? "open" : ""}`}>
                 <div className="userInteractionContainer">
-                    <h4>Welcome, {user && user.username}!</h4>
+                    <div className="userInteractionHeader">
+                        <h4>Welcome, {user && user.username}!</h4>
+                        {user && user.premium && (
+                            <span><ion-icon name="diamond-outline"></ion-icon></span>
+                        )}  
+                    </div>
+                    
                     <div className="userButtonContainer">
                         {user && user.premium ? (
-                            <button onClick={() => handleCheckout()}>V.I.P. <ion-icon name="diamond-outline"></ion-icon></button>
+                            <button onClick={() => handleCheckout()}>Quit Membership</button>
                         ) : (
                             <button onClick={() => handleCheckout()}>Get Premium</button>
                         )}
