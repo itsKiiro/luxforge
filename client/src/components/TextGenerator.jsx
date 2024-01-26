@@ -8,10 +8,12 @@ const TextGenerator = () => {
     const [textInput, setTextInput] = useState("");
     const [textOutput, setTextOutput] = useState("");
     const [displayedOutput, setDisplayedOutput] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         setDisplayedOutput("");
+        setIsLoading(true);
         
         fetch(getApi() + "/generate/text", {
             method: "POST",
@@ -23,6 +25,9 @@ const TextGenerator = () => {
         .then((data) => {
             setTextOutput(data.reply.message.content)
             setTextInput("");
+        })
+        .finally(() => {
+            setIsLoading(false);
         })
     }
 
@@ -50,7 +55,11 @@ const TextGenerator = () => {
         <div className="TextGenerator">
 
             <div className="textOutputContainer">
-                <p className="textOutput" value={displayedOutput}>{displayedOutput}</p>
+                {isLoading ? (
+                    <p className="textOutput">loading...</p>    
+                ) : (
+                    <p className="textOutput" value={displayedOutput}>{displayedOutput}</p>
+                )}     
             </div>
             <form className="textInputForm" onSubmit={handleSubmit}>
                 <input 
