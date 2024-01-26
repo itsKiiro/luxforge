@@ -34,11 +34,13 @@ const Navbar = () => {
     }
 
     const handleCheckout = () => {
+        console.log(user);
         fetch(getApi() + "/create/checkout/session", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
+            body: JSON.stringify(user)
         }).then(async (res) => {
             if (res.ok) {
                 return res.json();

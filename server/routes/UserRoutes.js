@@ -53,6 +53,7 @@ router.get("/get/userDTO", authenticateToken, async (req, res) => {
     try {
         const userDTO = {
             username: req.user.username,
+            email: req.user.email,
             premium: req.user.premium,
         }
 

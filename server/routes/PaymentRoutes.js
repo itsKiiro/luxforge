@@ -22,16 +22,19 @@ let transporter = nodemailer.createTransport({
 
 router.post("/create/checkout/session", async (req, res) => {
     try {
+        const user = await User.findOne({ username: req.body.username })
+
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             mode: 'subscription',
+            customer_email: user.email,
             line_items: [
                 {
-                    price: 999,
+                    price: 'price_1OcJAuBLmOHjf4IgNBzNQu5A',
                     quantity: 1,
                 }
             ],
-            success_url: `${process.env.CLIENT_URL}/success`,
+            success_url: `${process.env.CLIENT_URL}/`,
             cancel_url: `${process.env.CLIENT_URL}/`
         })
 
@@ -53,7 +56,11 @@ router.post('/webhook', express.raw({type: 'application/json'}), async (req, res
         case 'checkout.session.completed':
           const checkoutSessionCompleted = event.data.object;
           const checkoutEmail = checkoutSessionCompleted.customer_details.email;
-          const user = await User.findOne({ email: checkoutSessionCompleted.customer_details.email });
+          const user = await User.findOne({ email: checkoutEmail });
+
+          user.premium = true;
+          user.save();
+
           const sessionId = event.data.object.id;
           
           break;
