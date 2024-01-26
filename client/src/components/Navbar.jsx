@@ -56,12 +56,19 @@ const Navbar = () => {
 
     useEffect(() => {
         document.body.style.overflow = isMobileMenuOpen ? 'hidden' : 'auto';
+
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isMobileMenuOpen]);
+
+    useEffect(() => {
         document.body.style.overflow = showUserSidebar ? 'hidden' : 'auto';
 
         return () => {
             document.body.style.overflow = 'auto';
         };
-    }, [isMobileMenuOpen, showUserSidebar]);
+    }, [showUserSidebar]);
 
     useEffect(() => {
         getUserDTO(token)
