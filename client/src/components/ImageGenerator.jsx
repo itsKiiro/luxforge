@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./ImageGenerator.css";
-import { getApi } from "./Api";
+import { getApi, getUserDTO } from "./Api";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -11,15 +11,25 @@ const ImageGenerator = () => {
     const [imageModel, setImageModel] = useState("");
     const [imageSize, setImageSize] = useState("");
     const [isLoading, setIsLoading] = useState(false);
+    const [user, setUser] = useState(null);
 
     const token = localStorage.getItem("jwtToken");
 
+    useEffect(() => {
+        getUserDTO(token)
+        .then((data) => setUser(data))
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         if (imageModel === "dall-e-3" && !token) {
             toast.error("Login To Use Dall-E-3!");
+            return;
+        }
+
+        if (imageSize === "1024x1792" || imageSize === "1792x1024" && user.premium === false) {
+            toast.error("This size is for premium members only!")
             return;
         }
 
@@ -116,15 +126,15 @@ const ImageGenerator = () => {
                         </div>
                         <div className="settingInputs">
                             <label onClick={() => setImageSize("1024x1024")} >
-                                <p>1024×1024</p>
+                                <p>1024×1024 (Standard)</p>
                                 <input type="radio" value="1024x1024" name="size" />
                             </label>
                             <label onClick={() => setImageSize("512x512")} >
-                                <p>512×512</p>
+                                <p>512×512 (Dall-E 2 only)</p>
                                 <input type="radio" value="Dalle-2" name="size" />
                             </label>
                             <label onClick={() => setImageSize("256x256")} >
-                                <p>256×256</p>
+                                <p>256×256 (Dall-E 2 only)</p>
                                 <input type="radio" value="Dalle-2" name="size" />
                             </label>
                             <label onClick={() => setImageSize("1024x1792")} >
