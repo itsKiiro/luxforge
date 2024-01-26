@@ -76,6 +76,9 @@ const HomeOverview = () => {
                     <button onClick={() => navigate("/text")}><p>Try ChatBot</p> <ion-icon style={{ color: "black" }} name="arrow-forward-outline"></ion-icon></button>
                     <button onClick={() => navigate("/image")}><p>Try ImageGenerator</p> <ion-icon style={{ color: "black" }} name="arrow-forward-outline"></ion-icon></button>
                 </div>
+                <div className="homeInfoContainer">
+                    <p>*This website is part of my portfolio and represents one of my personal projects. The premium features are available for testing purposes, and no actual payments will be processed. Enjoy exploring the functionalities!</p>
+                </div>
             </div>
             <div className="rightSideContainer">
                 <div className="homeTextAnimationContainer">

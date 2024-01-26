@@ -84,6 +84,11 @@
     gap: 10px;
 }
 
+.homeInfoContainer {
+    color: #fff;
+    margin-top: 27px;
+}
+
 @media(max-width: 1028px) {
     .HomeOverview {
         display: flex;
