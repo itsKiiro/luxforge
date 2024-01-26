@@ -93,7 +93,12 @@ const Navbar = () => {
                 <div className="userInteractionContainer">
                     <h4>Welcome, {user && user.username}!</h4>
                     <div className="userButtonContainer">
-                        <button onClick={() => handleCheckout()}>Get Premium</button>
+                        {user && user.premium ? (
+                            <button onClick={() => handleCheckout()}>V.I.P. <ion-icon name="diamond-outline"></ion-icon></button>
+                        ) : (
+                            <button onClick={() => handleCheckout()}>Get Premium</button>
+                        )}
+                        
                         <button onClick={() => handleLogout()}>Logout</button>                        
                     </div>
                 </div>

@@ -51,10 +51,13 @@ router.post("/login", async (req, res) => {
 
 router.get("/get/userDTO", authenticateToken, async (req, res) => {
     try {
+
+        const foundUser = await User.findOne({ username: req.user.username });
+
         const userDTO = {
-            username: req.user.username,
-            email: req.user.email,
-            premium: req.user.premium,
+            username: foundUser.username,
+            email: foundUser.email,
+            premium: foundUser.premium,
         }
 
         res.json(userDTO);
