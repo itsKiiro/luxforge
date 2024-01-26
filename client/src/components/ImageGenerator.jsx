@@ -28,7 +28,7 @@ const ImageGenerator = () => {
             return;
         }
 
-        if (imageSize === "1024x1792" || imageSize === "1792x1024" && user.premium === false) {
+        if (imageSize === "1024x1792" && user.premium === false || imageSize === "1792x1024" && user.premium === false) {
             toast.error("This size is for premium members only!")
             return;
         }
